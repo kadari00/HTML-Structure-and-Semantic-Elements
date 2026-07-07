@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Marks Table</title>
+    <style>
+        /* ---- Table styling with borders, padding, and alternate row colors ---- */
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            max-width: 900px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+            background: #f5f9ff;
+            color: #1e2a3a;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            color: #0b2b44;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #3e5a76;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        /* ---- table container (responsive) ---- */
+        .table-wrapper {
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+            border-radius: 12px;
+            background: white;
+            padding: 1px; /* avoids double-border with shadow */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* ---- borders & cell padding ---- */
+        th, td {
+            border: 1px solid #cbd6e6;
+            padding: 0.9rem 1rem;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        /* ---- thead styling ---- */
+        thead th {
+            background: #1e3a5f;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            padding: 1rem 1rem;
+            border-bottom: 2px solid #0f2a44;
+        }
+
+        /* ---- tbody: alternate row colors (zebra stripes) ---- */
+        tbody tr:nth-child(odd) {
+            background-color: #f2f7fe;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        /* subtle hover effect for readability */
+        tbody tr:hover {
+            background-color: #e6effb;
+            transition: background 0.15s ease;
+        }
+
+        /* ---- tfoot styling ---- */
+        tfoot td {
+            background: #e7edf6;
+            font-weight: 600;
+            color: #0b2b44;
+            border-top: 2px solid #1e3a5f;
+            padding: 0.8rem 1rem;
+            font-size: 0.92rem;
+        }
+
+        /* ---- caption ---- */
+        caption {
+            caption-side: top;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0b2b44;
+            padding: 1.2rem 0 0.6rem 0;
+            letter-spacing: -0.2px;
+            background: transparent;
+        }
+
+        /* grade badges (optional visual aid) */
+        .grade-A { color: #0f6b3a; font-weight: 700; }
+        .grade-B { color: #2a6b7a; font-weight: 600; }
+        .grade-C { color: #8a6d1b; font-weight: 600; }
+        .grade-D { color: #a5532b; font-weight: 600; }
+        .grade-F { color: #b13e3e; font-weight: 700; }
+
+        /* small note */
+        .footnote {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #3d5a78;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>📊 Student Marks Table</h1>
+    <p class="subtitle">Spring 2025 · Computer Science Department</p>
+
+    <div class="table-wrapper">
+        <table>
+
+            <!-- ===== TABLE CAPTION (describes the table) ===== -->
+            <caption>Final grades for selected students — <em>including merged cells for course grouping</em></caption>
+
+            <!-- ===== THEAD: column headers ===== -->
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Score</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+
+            <!-- ===== TBODY: data rows ===== -->
+            <tbody>
+                <!-- 
+                    MERGED CELLS DEMO (rowspan & colspan):
+                    - We use rowspan="2" on the first cell of the two "Data Structures" rows 
+                      to merge the student name across both.
+                    - We use colspan="4" in the "Summary" row inside tfoot (see below).
+                -->
+                <tr>
+                    <td rowspan="2" style="font-weight: 600; background-color: #eef4fd;">Emily Chen</td>
+                    <td>Data Structures</td>
+                    <td>94</td>
+                    <td class="grade-A">A</td>
+                </tr>
+                <tr>
+                    <!-- rowspan above merges the name cell; this row has only 3 cells -->
+                    <td>Algorithms</td>
+                    <td>88</td>
+                    <td class="grade-B">B+</td>
+                </tr>
+
+                <tr>
+                    <td>Marcus Rivera</td>
+                    <td>Data Structures</td>
+                    <td>76</td>
+                    <td class="grade-C">C+</td>
+                </tr>
+
+                <tr>
+                    <td>Sophia Kim</td>
+                    <td>Data Structures</td>
+                    <td>82</td>
+                    <td class="grade-B">B-</td>
+                </tr>
+
+                <tr>
+                    <td>James Okafor</td>
+                    <td>Operating Systems</td>
+                    <td>91</td>
+                    <td class="grade-A">A-</td>
+                </tr>
+
+                <tr>
+                    <td>Lena Müller</td>
+                    <td>Operating Systems</td>
+                    <td>67</td>
+                    <td class="grade-D">D+</td>
+                </tr>
+
+                <tr>
+                    <td>Daniel Park</td>
+                    <td>Operating Systems</td>
+                    <td>53</td>
+                    <td class="grade-F">F</td>
+                </tr>
+
+                <!-- ===== using colspan in a data row to show a note ===== -->
+                <tr style="background: #f9fcff !important;">
+                    <td colspan="4" style="text-align: center; color: #1e3a5f; font-style: italic; background: #f1f6fd; border-top: 2px dashed #9db4d0;">
+                        ⚡ <strong>Note:</strong> Emily Chen appears twice — merged name using <code>rowspan="2"</code>
+                    </td>
+                </tr>
+            </tbody>
+
+            <!-- ===== TFOOT: summary / aggregate row with colspan ===== -->
+            <tfoot>
+                <tr>
+                    <!-- colspan="4" merges all columns into one cell for a summary -->
+                    <td colspan="4" style="text-align: center; background: #dce5f0; font-weight: 600; letter-spacing: 0.3px;">
+                        📌 <strong>Summary:</strong> 7 students · 3 courses · grades range from A to F
+                        <span style="font-weight: 400; margin-left: 1.2rem; font-size: 0.9rem;">
+                            (colspan used to merge this footer cell)
+                        </span>
+                    </td>
+                </tr>
+                <!-- optional extra footer row to show additional stats -->
+                <tr>
+                    <td colspan="2" style="text-align: right; background: #e7edf6; font-weight: 500;">Average Score (all):</td>
+                    <td colspan="2" style="background: #e7edf6; font-weight: 600;">78.7</td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </div>
+
+    <div class="footnote">
+        <span>✦ Borders · cell padding · alternate row colors (zebra) · rowspan &amp; colspan demonstrated</span>
+    </div>
+
+</body>
+</html>
