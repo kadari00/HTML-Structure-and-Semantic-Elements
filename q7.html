@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore HTML5</title>
+    <style>
+        /* ===== clean, modern styling ===== */
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            background: #f7faff;
+            color: #1a2636;
+            line-height: 1.6;
+        }
+        h1 {
+            font-weight: 500;
+            letter-spacing: -0.5px;
+            color: #0e2f4b;
+            border-bottom: 3px solid #b8d0e7;
+            padding-bottom: 0.3rem;
+        }
+        .subhead {
+            color: #2e4b6b;
+            margin-top: -0.2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        section {
+            background: white;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 14px rgba(0, 20, 40, 0.06);
+            border: 1px solid #e2ebf6;
+        }
+        h2 {
+            margin-top: 0;
+            font-weight: 500;
+            color: #1a3d5e;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        h2 small {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #4c6f8f;
+            background: #eaf1fa;
+            padding: 0.1rem 0.8rem;
+            border-radius: 20px;
+        }
+        label {
+            display: inline-block;
+            font-weight: 500;
+            margin-bottom: 0.2rem;
+            color: #1e3857;
+        }
+        .form-group {
+            margin-bottom: 1.4rem;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            max-width: 320px;
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #bccde0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fafcff;
+            transition: 0.15s;
+        }
+        .form-group input:focus, .form-group select:focus {
+            border-color: #1f6390;
+            outline: 2px solid #c0d8ee;
+            outline-offset: 1px;
+            background: white;
+        }
+        .form-group input:invalid {
+            border-color: #c25a4a;
+            background: #fff6f4;
+        }
+        .form-group input:valid {
+            border-color: #3a8b6e;
+        }
+        .inline-label {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .inline-label input[type="range"] {
+            flex: 1;
+            min-width: 160px;
+            max-width: 260px;
+        }
+        .inline-label span {
+            font-weight: 500;
+            color: #1f4b6e;
+            min-width: 2.8rem;
+        }
+        button {
+            background: #1f5a7e;
+            color: white;
+            border: none;
+            padding: 0.6rem 2rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(26, 67, 113, 0.2);
+        }
+        button:hover {
+            background: #123e5c;
+            transform: scale(1.01);
+        }
+        video {
+            width: 100%;
+            max-width: 560px;
+            border-radius: 12px;
+            background: #0d1b2b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+        .video-meta {
+            background: #e9f0f9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #1c3b57;
+        }
+        progress, meter {
+            width: 100%;
+            max-width: 380px;
+            height: 1.2rem;
+            border-radius: 20px;
+            accent-color: #1f6e4a;
+        }
+        meter {
+            accent-color: #b38b2c;
+        }
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 3rem;
+            align-items: center;
+        }
+        .flex-row > div {
+            flex: 1 1 200px;
+        }
+        .badge {
+            background: #dce8f5;
+            border-radius: 30px;
+            padding: 0.15rem 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1a3d5e;
+            letter-spacing: 0.3px;
+        }
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid #d0dfee;
+            text-align: center;
+            color: #3d5d7a;
+            font-size: 0.9rem;
+        }
+        .aria-note {
+            background: #eef4fa;
+            border-radius: 8px;
+            padding: 0.3rem 1rem;
+            font-size: 0.85rem;
+            color: #1f4462;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==============================================================
+     PAGE: Explore HTML5
+     FEATURES DEMONSTRATED:
+       - new input types: date, range, color
+       - <video> with controls
+       - ARIA attributes (role, aria-label, aria-valuenow, etc.)
+       - <progress> and <meter> elements
+       - HTML5 form validation (required, min, max, type)
+     ============================================================== -->
+
+<header>
+    <h1>🧪 Explore HTML5</h1>
+    <p class="subhead">Interactive demo of modern input types, video, ARIA, progress, and validation.</p>
+</header>
+
+<main>
+
+    <!-- ============================================= -->
+    <!-- SECTION 1: New input types (date, range, color) -->
+    <!-- ============================================= -->
+    <section aria-labelledby="input-heading">
+        <h2 id="input-heading">
+            📅 New Input Types
+            <small>date · range · color</small>
+        </h2>
+
+        <form id="demoForm" aria-label="HTML5 input demo form">
+            <!-- DATE picker -->
+            <div class="form-group">
+                <label for="birthday">📆 Choose a date:</label>
+                <input type="date" id="birthday" name="birthday"
+                       aria-label="Select a date"
+                       required
+                       min="2020-01-01" max="2026-12-31"
+                       value="2025-06-15" />
+                <span class="badge" style="margin-left: 0.6rem;">type="date"</span>
+                <div style="font-size: 0.85rem; color: #3b5f7a;">(required, min 2020, max 2026)</div>
+            </div>
+
+            <!-- RANGE slider -->
+            <div class="form-group">
+                <label for="volume">🔊 Volume (range):</label>
+                <div class="inline-label">
+                    <input type="range" id="volume" name="volume"
+                           min="0" max="100" value="65"
+                           aria-label="Volume control slider"
+                           aria-valuemin="0" aria-valuemax="100" aria-valuenow="65"
+                           oninput="document.getElementById('volumeValue').textContent = this.value;" />
+                    <span id="volumeValue" aria-live="polite">65</span>
+                    <span class="badge">type="range"</span>
+                </div>
+            </div>
+
+            <!-- COLOR picker -->
+            <div class="form-group">
+                <label for="accentColor">🎨 Pick a color:</label>
+                <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
+                    <input type="color" id="accentColor" name="accentColor"
+                           value="#2a6f97"
+                           aria-label="Choose a color for the accent"
+                           style="width: 70px; height: 50px; padding: 2px; border-radius: 8px; border: 1px solid #b0c8df;" />
+                    <span class="badge">type="color"</span>
+                    <span style="font-size: 0.9rem; color: #1f4a6b;">(hex value: <code id="colorHex">#2a6f97</code>)</span>
+                </div>
+                <script>
+                    // sync color display
+                    document.getElementById('accentColor').addEventListener('input', function(e) {
+                        document.getElementById('colorHex').textContent = e.target.value;
+                    });
+                </script>
+            </div>
+
+            <button type="submit" role="button" aria-label="Submit the form (validation will run)">Submit</button>
+            <span style="margin-left: 1rem; font-size: 0.9rem; color: #3b5f7a;">
+                ⚡ try submitting empty/ invalid fields
+            </span>
+        </form>
+        <div class="aria-note" style="margin-top: 1rem;">
+            <span role="img" aria-label="accessibility icon">♿</span> 
+            ARIA: <code>aria-label</code>, <code>aria-valuenow</code>, <code>aria-live</code>, <code>role="button"</code> used above.
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- SECTION 2: Video with controls + ARIA         -->
+    <!-- ============================================= -->
+    <section aria-labelledby="video-heading">
+        <h2 id="video-heading">
+            🎬 Video Element
+            <small>controls · poster · ARIA</small>
+        </h2>
+
+        <div class="video-wrapper">
+            <video controls
+                   aria-label="Sample HTML5 video showing a scenic time-lapse"
+                   role="application"
+                   poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%231a334a'/%3E%3Ctext x='40' y='115' font-family='Segoe UI' font-size='24' fill='%23c4d9f0'%3E🎥 HTML5 Video%3C/text%3E%3C/svg%3E"
+                   style="background: #0b1f2e;">
+                <!-- sample video from public domain / common sources -->
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                <track kind="captions" label="English" srclang="en" default />
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-meta" role="complementary" aria-label="video information">
+                <p><strong>🎞️ Big Buck Bunny</strong> (short clip)</p>
+                <p><span role="img" aria-label="controls">▶️</span> Use built-in controls to play/pause, adjust volume, or go fullscreen.</p>
+                <p><span class="badge">ARIA</span> <code>role="application"</code> + <code>aria-label</code> on video</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- SECTION 3: Progress bar + Meter               -->
+    <!-- ============================================= -->
+    <section aria-labelledby="progress-heading">
+        <h2 id="progress-heading">
+            📊 Progress &amp; Meter
+            <small>&lt;progress&gt; · &lt;meter&gt;</small>
+        </h2>
+
+        <div class="flex-row">
+            <!-- PROGRESS (determinate) -->
+            <div>
+                <label for="courseProgress">Course completion:</label>
+                <progress id="courseProgress" value="68" max="100" 
+                          aria-label="Course progress 68 percent">
+                    68%
+                </progress>
+                <div style="display: flex; justify-content: space-between; max-width: 380px; font-size: 0.85rem; color: #2b5273;">
+                    <span>0%</span>
+                    <span>68%</span>
+                    <span>100%</span>
+                </div>
+                <span class="badge">&lt;progress&gt;</span>
+                <span style="margin-left: 0.8rem; font-size: 0.9rem;">value="68" max="100"</span>
+            </div>
+
+            <!-- METER (with different ranges) -->
+            <div>
+                <label for="diskMeter">💾 Storage usage (meter):</label>
+                <meter id="diskMeter" 
+                       min="0" max="100" low="30" high="80" optimum="50"
+                       value="72"
+                       aria-label="Storage usage meter, 72 percent">
+                    72%
+                </meter>
+                <div style="display: flex; justify-content: space-between; max-width: 380px; font-size: 0.8rem; color: #2b5273;">
+                    <span>0</span>
+                    <span>low:30</span>
+                    <span>opt:50</span>
+                    <span>high:80</span>
+                    <span>100</span>
+                </div>
+                <span class="badge">&lt;meter&gt;</span>
+                <span style="margin-left: 0.8rem; font-size: 0.9rem;">value="72" (high range → yellow)</span>
+                <div style="font-size: 0.8rem; color: #3d6a8a; margin-top: 0.2rem;">
+                    ⚡ Meter uses <code>low</code>, <code>high</code>, <code>optimum</code> attributes.
+                </div>
+            </div>
+        </div>
+        <div class="aria-note" style="margin-top: 0.8rem;">
+            ♿ ARIA: <code>aria-label</code> on both <code>progress</code> and <code>meter</code> 
+            for screen reader clarity.
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- SECTION 4: HTML5 form validation summary      -->
+    <!-- ============================================= -->
+    <section aria-labelledby="validation-heading" style="background: #eaf2fa;">
+        <h2 id="validation-heading">✅ Built-in HTML5 Validation</h2>
+        <p style="margin-bottom: 0.3rem;">
+            The form above uses <strong>required</strong>, <strong>min/max</strong> (date), 
+            and <strong>type</strong> constraints. 
+            Try submitting with an empty date or out-of-range value — the browser will 
+            show a validation message automatically.
+        </p>
+        <ul style="color: #1b405e;">
+            <li><code>type="date"</code> + <code>required</code> + <code>min/max</code></li>
+            <li><code>type="range"</code> with <code>min="0" max="100"</code></li>
+            <li><code>type="color"</code> (always valid, but shows a color picker)</li>
+        </ul>
+        <p style="margin-bottom: 0; font-size: 0.9rem; background: #d7e3f2; padding: 0.2rem 1rem; border-radius: 20px; display: inline-block;">
+            <span role="img" aria-label="check">✔</span> All inputs are inside a <code>&lt;form&gt;</code> with validation enabled.
+        </p>
+    </section>
+
+</main>
+
+<footer role="contentinfo">
+    <p>🚀 <strong>Explore HTML5</strong> · Semantic, accessible, and feature-rich.</p>
+    <p style="font-size: 0.8rem; color: #4e6f8e;">
+        Video courtesy of <a href="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" style="color: #1d5980;">Big Buck Bunny</a> (CC‑BY).
+    </p>
+</footer>
+
+<!-- simple script to keep range value in sync (already inlined above) -->
+<script>
+    // additional: ensure volume display updates on page load
+    (function() {
+        const range = document.getElementById('volume');
+        if (range) {
+            const display = document.getElementById('volumeValue');
+            if (display) display.textContent = range.value;
+        }
+    })();
+</script>
+
+</body>
+</html>
