@@ -1,0 +1,279 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Gallery</title>
+    <style>
+        /* ===== clean gallery styling ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 2rem;
+            background: #f6faff;
+            color: #1a2636;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid #c5d8ed;
+            padding-bottom: 1rem;
+        }
+        h1 {
+            font-weight: 500;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+            color: #0b2a44;
+        }
+        .subhead {
+            color: #2e5477;
+            font-size: 1.05rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem 1.8rem;
+            margin: 2rem 0;
+        }
+        figure {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            padding: 1rem 1rem 0.8rem;
+            margin: 0;
+            border: 1px solid #e3edf6;
+            transition: transform 0.15s;
+            display: flex;
+            flex-direction: column;
+        }
+        figure:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.08);
+        }
+        figure img {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 12px;
+            background: #dae4f0;
+            display: block;
+        }
+        figcaption {
+            margin-top: 0.6rem;
+            font-size: 0.95rem;
+            color: #1c3d5c;
+            font-weight: 500;
+            padding: 0.2rem 0.2rem 0.4rem;
+            text-align: center;
+            border-top: 1px solid #e7eff8;
+            padding-top: 0.6rem;
+        }
+        .media-section {
+            background: white;
+            border-radius: 18px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0 1.5rem;
+            border: 1px solid #e3edf6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .media-section h2 {
+            font-weight: 500;
+            color: #1c3f60;
+            margin-bottom: 0.5rem;
+        }
+        .media-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #0f1e2e;
+            margin-top: 0.8rem;
+        }
+        .media-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 14px;
+        }
+        .edit-note {
+            display: inline-block;
+            background: #e4eefa;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #1f4b6e;
+            margin-top: 0.5rem;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid #cdddee;
+            text-align: center;
+            color: #3d5e7a;
+            font-size: 0.9rem;
+        }
+        /* ---- image size override example (can be customized per image) ---- */
+        .portrait-img {
+            aspect-ratio: 3 / 4; /* portrait style */
+            object-fit: cover;
+        }
+        .wide-img {
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+        }
+        /* ---- edit hint ---- */
+        .edit-hint {
+            background: #f0f5fc;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #1e4a6e;
+            border: 1px dashed #9dbad6;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==============================================================
+     PAGE: My Gallery
+     FEATURES:
+       - 3+ images with descriptive alt text
+       - each wrapped in <figure> with <figcaption>
+       - embedded YouTube video (iframe)
+       - image sizing via CSS (aspect-ratio & object-fit)
+       - editable pictures — you can replace src & alt easily
+     ============================================================== -->
+
+<header>
+    <h1>🖼️ My Gallery</h1>
+    <p class="subhead">A collection of moments, places, and inspirations</p>
+    <span class="edit-hint">✏️ <strong>Edit the pictures:</strong> replace <code>src</code> and <code>alt</code> in each <code>&lt;img&gt;</code></span>
+</header>
+
+<main>
+
+    <!-- ===== GALLERY GRID (3 images with figure/figcaption) ===== -->
+    <div class="gallery-grid">
+
+        <!-- Image 1 - landscape -->
+        <figure>
+            <img 
+                src="por.jpg" 
+                alt="Mountain lake at sunset with dramatic skies and reflection" 
+                loading="lazy"
+                class="wide-img"
+                width="600" height="400"
+            />
+            <figcaption>🏔️ Alpine Lake · Sunset reflection</figcaption>
+        </figure>
+
+        <!-- Image 2 - portrait / urban -->
+        <figure>
+            <img 
+                src="eng.jpg" 
+                alt="City street at night with neon signs and wet pavement" 
+                loading="lazy"
+                class="portrait-img"
+                width="600" height="800"
+            />
+            <figcaption>🌃 Neon Nights · Urban abstract</figcaption>
+        </figure>
+
+        <!-- Image 3 - nature / close-up -->
+        <figure>
+            <img 
+                src="BRAZ.jpg" 
+                alt="Close-up of green fern leaves with soft natural light" 
+                loading="lazy"
+                class="wide-img"
+                width="600" height="400"
+            />
+            <figcaption>🌿 Forest Detail · Fern frond</figcaption>
+        </figure>
+
+        <!-- Image 4 (extra, to show more than 3) - architecture -->
+        <figure>
+            <img 
+                src="por.jpg"
+                alt="Modern glass building with blue sky and clouds reflection" 
+                loading="lazy"
+                class="wide-img"
+                width="600" height="400"
+            />
+            <figcaption>🏛️ Glass &amp; Sky · Architectural lines</figcaption>
+        </figure>
+
+        <!-- Image 5 - people / lifestyle (optional, but we have 5) -->
+        <figure>
+            <img 
+                src="arg.jpg" 
+                alt="Person walking on a misty forest path with sunlight rays" 
+                loading="lazy"
+                class="portrait-img"
+                width="600" height="800"
+            />
+            <figcaption>🌲 Morning Walk · Light through trees</figcaption>
+        </figure>
+
+    </div>
+
+    <!-- ===== EMBED: YouTube Video (iframe) ===== -->
+    <section class="media-section" aria-labelledby="video-heading">
+        <h2 id="video-heading">🎬 Featured Video</h2>
+        <p style="color: #2b5475; margin-bottom: 0.2rem;">
+            A cinematic short film that inspires my creative work — embedded with <code>&lt;iframe&gt;</code>.
+        </p>
+        <div class="media-wrapper">
+            <iframe 
+                src="https://www.youtube.com/embed/6v2L2UGZJAM?si=UxrSJ8svt7oagc5k" 
+                title="Cinematic short film - nature and creativity"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen
+                loading="lazy"
+                aria-label="YouTube video: a cinematic short film about nature and creativity">
+            </iframe>
+        </div>
+        <p style="margin-top: 0.6rem; font-size: 0.9rem; color: #3f6380;">
+            <span role="img" aria-label="info">🎞️</span> 
+            <em>“The art of stillness”</em> — a visual journey through landscapes and light.
+        </p>
+    </section>
+
+    <!-- ===== EDITING INSTRUCTIONS (visible to the user) ===== -->
+    <div style="background: #ecf3fb; padding: 1rem 1.8rem; border-radius: 16px; border-left: 5px solid #2f6b93; margin-top: 1.5rem;">
+        <p style="font-weight: 500; color: #0b2a44;">✏️ <strong>How to edit the pictures:</strong></p>
+        <ul style="margin-left: 1.5rem; color: #1d4463;">
+            <li>Each <code>&lt;img&gt;</code> has a <strong><code>src</code></strong> attribute — replace the URL with your own image link.</li>
+            <li>Update the <strong><code>alt</code></strong> text to describe your new image (for accessibility &amp; SEO).</li>
+            <li>You can also adjust <strong><code>width</code></strong> and <strong><code>height</code></strong> attributes (or use CSS classes like <code>.portrait-img</code> / <code>.wide-img</code>).</li>
+            <li>All images are wrapped in <code>&lt;figure&gt;</code> with a <code>&lt;figcaption&gt;</code> — feel free to change the captions too.</li>
+        </ul>
+        <p style="margin-top: 0.3rem; font-size: 0.9rem; color: #1e4a6e;">
+            💡 <em>Current images are from <a href="https://picsum.photos" target="_blank" style="color: #1f5a7e;">picsum.photos</a> — replace them with your own!</em>
+        </p>
+    </div>
+
+</main>
+
+<footer role="contentinfo">
+    <p>© 2025 · My Gallery · built with semantic HTML, <code>&lt;figure&gt;</code>, and responsive images</p>
+    <p style="font-size: 0.8rem; color: #4f708e;">
+        🖼️ All images have descriptive alt text · video via <code>&lt;iframe&gt;</code> · layout uses CSS grid &amp; aspect-ratio.
+    </p>
+</footer>
+
+</body>
+</html>
